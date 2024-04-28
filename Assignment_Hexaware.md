@@ -290,13 +290,7 @@ WHERE event_id NOT IN (SELECT DISTINCT event_id FROM Booking);
 6. Calculate the Total Number of Tickets Sold for Each Event Type Using a Subquery in the FROM
 Clause.
 ```
-SELECT event_type, SUM(total_tickets_sold) AS total_tickets_sold
-FROM (
-    SELECT event_type, 
-           (SELECT SUM(num_tickets) FROM Booking WHERE Booking.event_id = Event.event_id) AS total_tickets_sold
-    FROM Event
-) AS subquery
-GROUP BY event_type;
+
 ```
 7. Find Events with Ticket Prices Higher Than the Average Ticket Price Using a Subquery in the
 WHERE Clause.
@@ -321,13 +315,7 @@ WHERE customer_id IN (SELECT DISTINCT customer_id FROM Booking WHERE event_id IN
 10. Calculate the Total Number of Tickets Sold for Each Event Category Using a Subquery with
 GROUP BY.
 ```
-SELECT event_type, SUM(total_tickets_sold) AS total_tickets_sold
-FROM (
-    SELECT event_type, 
-           (SELECT SUM(num_tickets) FROM Booking WHERE Booking.event_id = Event.event_id) AS total_tickets_sold
-    FROM Event
-) AS subquery
-GROUP BY event_type;
+
 ```
 11. Find Users Who Have Booked Tickets for Events in each Month Using a Subquery with
 DATE_FORMAT.
